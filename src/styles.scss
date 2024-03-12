@@ -1,1 +1,18 @@
+@use 'themes' as *;
+
+@use '@nebular/theme/styles/globals' as *;
+
+@include nb-install() {
+  @include nb-theme-global();
+};
 /* You can add global styles to this file, and also import other style files */
+nb-base-calendar nb-card {
+  height: 476px !important;
+  width: 485px !important;
+}
+
+nb-calendar-picker-row{
+  height: 70px;
+}
+
+
