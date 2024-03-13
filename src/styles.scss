@@ -15,4 +15,28 @@ nb-calendar-picker-row{
   height: 70px;
 }
 
+*{
+  font-family: "Source Sans 3", sans-serif;
+}
 
+#card-2{
+  font-family: "Source Sans 3", sans-serif !important;
+}
+body > app-root > app-home > nb-layout > div > div > div > div > div > nb-layout-column.col > nb-card > nb-card-body > nb-calendar > nb-base-calendar > nb-card > nb-card-body > nb-calendar-day-picker > div > nb-calendar-days-names{
+  color: white;
+}
+
+
+.layout{
+  background-color: #192435 !important;
+}
+
+body > app-root > app-home > nb-layout > div > div > div > div > div > nb-layout-column.col > nb-card > nb-card-body > nb-calendar > nb-base-calendar > nb-card {
+  background-color: #393e46
+}
+
+/* Importing Bootstrap SCSS file. */
+@import "./node_modules/bootstrap/scss/bootstrap";
+
+/* Importing Datepicker SCSS file. */
+@import "node_modules/ngx-bootstrap/datepicker/bs-datepicker";

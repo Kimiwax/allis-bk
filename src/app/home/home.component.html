@@ -1,8 +1,7 @@
 <nb-layout center>
-    <nb-layout-header>Awesome Company</nb-layout-header>
-  
-    <nb-layout-column>
-      <nb-card style="align-items: center;">
+    <nb-layout-header>AllisBK</nb-layout-header>
+    <nb-layout-column class="col">
+      <nb-card style="align-items: center; border: none; background-color: transparent;">
         <nb-card-body>
           <nb-calendar [dayCellComponent]="dayCellComponent" [(date)]="date" size="large">
           </nb-calendar>
@@ -11,11 +10,11 @@
     </nb-layout-column>
 
     <nb-layout-column>
-      <nb-card status="info">
-        <nb-card-header>{{ date | date }}</nb-card-header>
+      <nb-card status="info" style="margin-top: 16px; height: 476px;">
+        <nb-card-header id="card-2" style="font-size: 30px;">{{ date | date }}</nb-card-header>
         <ng-container *ngIf="buscarCoincidencia(date); else empty">
-        <nb-card-body>
-          Saldo en cuenta: {{saldoDelDia}}
+        <nb-card-body style="font-size: 22px;">
+          Saldo en cuenta: ${{saldoDelDia}}
         </nb-card-body>
         <nb-layout-footer>
           <button nbButton outline status="info" (click)="agregarEditarImporte()">Editar</button>
@@ -36,13 +35,12 @@
           </nb-layout-footer>
   
         </ng-template>
-  
+        <nb-card>
+          <nb-card-body>
+            
+          </nb-card-body>
+        </nb-card>
       </nb-card>
       
     </nb-layout-column>
     </nb-layout>
-  <nb-layout>
-    <nb-layout-column>
-      <div style="background-color: lightcoral; height: 200px; width: 100%;">Caja debajo de las columnas</div>
-    </nb-layout-column>
-  </nb-layout>
