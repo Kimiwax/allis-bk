@@ -43,16 +43,22 @@ close(){
   // console.log(1, fechaFormateada);
   // console.log(2, fechaSeleccionadaFormateada);
   let fechaSeleccionadaP = (this.diaSeleccionada);
-  
   if(fechaFormateada != fechaSeleccionadaFormateada){
     console.log("diferente fecha");
     let res = testOBjF.find((obj:any) => obj.timeStamp == fechaSeleccionadaP)
     if(res){
       res.saldo =  this.inputImporte;
-
+      this.myServ.guardarDato({timeStamp:fechaSeleccionada, saldo: this.inputImporte}).then(()=>{
+        console.log("Se agrego");
+        window.location.reload();
+      })
       localStorage.setItem('testObj', JSON.stringify(testOBjF));
     }
     else{
+      this.myServ.guardarDato({timeStamp:fechaSeleccionada, saldo: this.inputImporte}).then(()=>{
+        console.log("Se agrego");
+        window.location.reload();
+      })
   testOBjF.push({
       timeStamp: fechaSeleccionada,
       saldo: this.inputImporte

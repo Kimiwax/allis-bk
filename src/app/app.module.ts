@@ -12,6 +12,10 @@ import { registerLocaleData } from '@angular/common';
 import { ModalAgregarEditComponent } from './modal-agregar-edit/modal-agregar-edit.component';
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
+import {AngularFireModule} from '@angular/fire/compat';
+import {environment } from 'src/environments/environment'
+import {AngularFirestoreModule} from '@angular/fire/compat/firestore'
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 
 registerLocaleData(es);
 @NgModule({
@@ -34,7 +38,10 @@ registerLocaleData(es);
     NbButtonModule,
     NbDialogModule.forRoot(),
     NbInputModule,
-    FormsModule
+    FormsModule,
+    AngularFirestoreModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'es-AR'},

@@ -22,6 +22,18 @@ export class HomeComponent implements OnInit {
     let fechaActualHora0 = fechaActualP.setHours(0, 0, 0, 0);
     this.buscarCoincidencia(fechaActualP);
     console.log(fechaActualP);
+
+    myServ.leerDatos().subscribe(res => {
+      console.log("res",res);
+
+      res.forEach((element:any) => {
+        console.log(element.payload.doc.id);
+        console.log(element.payload.doc.data());
+        
+        
+      });
+      
+    })
     
   }
 
@@ -51,7 +63,7 @@ console.log(fechaSeleccionada);
 this.myServ.fechaSeleccionada = fechaSeleccionada;
 this.dialogService.open(ModalAgregarEditComponent).onClose.subscribe(()=> {
   console.log("Se cerro");
-  window.location.reload();
+ // window.location.reload();
   let testObj: any = localStorage.getItem('testObj') || [];
   let testOBjF = JSON.parse(testObj)
   

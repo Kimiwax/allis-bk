@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +17,15 @@ export class ServVarsService {
 fechaSeleccionada: any;
 
 
-  constructor() { }
+  constructor(private firebase: AngularFirestore) { }
+
+  guardarDato(datos:any): Promise<any>{
+    return this.firebase.collection('anioID').add(datos)
+  }
+
+  leerDatos(): Observable<any>{
+   return this.firebase.collection('anioID').snapshotChanges();
+  }
 
   agregar(valor:any){
     this.fechasYImportes.push(valor)
