@@ -3,6 +3,7 @@ import { Component,ChangeDetectionStrategy, ChangeDetectorRef, OnInit } from '@a
 import { CalendarioDineroComponent } from '../calendario-dinero/calendario-dinero.component';
 import { ModalAgregarEditComponent } from '../modal-agregar-edit/modal-agregar-edit.component';
 import { ServVarsService } from '../serv-vars.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-home',
@@ -10,30 +11,46 @@ import { ServVarsService } from '../serv-vars.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+//  testObj: any = [{saldo: '88', timeStamp: 'Wed Mar 06 2024 00:00:00 GMT-0300 (hora estándar de Argentina)'}]
  testObj: any;
-  constructor(private dialogService: NbDialogService, private myServ: ServVarsService, private cdr: ChangeDetectorRef){
+ arrayTest:any = []
+  constructor(private dialogService: NbDialogService, private myServ: ServVarsService){
     this.saldoDelDia = '';
-    let testObjs: any = localStorage.getItem('testObj') || [];
-    let testOBjF = JSON.parse(testObjs);
-    console.log(testOBjF);
-    
-    this.testObj = testOBjF
-    let fechaActualP = new Date()
-    let fechaActualHora0 = fechaActualP.setHours(0, 0, 0, 0);
-    this.buscarCoincidencia(fechaActualP);
-    console.log(fechaActualP);
-
-    myServ.leerDatos().subscribe(res => {
-      console.log("res",res);
+    //  let testObjs: any = localStorage.getItem('testObj') || [];
+      myServ.leerDatos().subscribe(res => {
 
       res.forEach((element:any) => {
-        console.log(element.payload.doc.id);
-        console.log(element.payload.doc.data());
-        
+        // console.log(element.payload.doc.id);
+        // console.log(element.payload.doc.data());
+        this.arrayTest.push(element.payload.doc.data())
         
       });
+      console.log(this.arrayTest);
+      this.testObj = this.arrayTest
+      let fechaActualP = new Date()
+      console.log("fecha1", this.testObj);
       
+    console.log("fechaA",fechaActualP);
+    localStorage.setItem('testObj', JSON.stringify(this.testObj));
     })
+    // let testOBjF = JSON.parse(testObjs);
+    // console.log("home",testOBjF);
+    
+    // let fechaActualP = new Date()
+    // this.buscarCoincidencia(fechaActualP);
+    // console.log(fechaActualP);
+
+  //  myServ.leerDatos().subscribe(res => {
+  //     console.log("res",res);
+
+  //     res.forEach((element:any) => {
+  //       console.log(element.payload.doc.id);
+  //       console.log(element.payload.doc.data());
+        
+        
+  //     });
+      
+  //   })
     
   }
 
@@ -63,9 +80,12 @@ console.log(fechaSeleccionada);
 this.myServ.fechaSeleccionada = fechaSeleccionada;
 this.dialogService.open(ModalAgregarEditComponent).onClose.subscribe(()=> {
   console.log("Se cerro");
- // window.location.reload();
-  let testObj: any = localStorage.getItem('testObj') || [];
-  let testOBjF = JSON.parse(testObj)
+   setTimeout(() => {
+    window.location.reload();  
+   }, 3000);
+  
+  // let testObj: any = localStorage.getItem('testObj') || [];
+  // let testOBjF = JSON.parse(testObj)
   
 });
 
@@ -109,8 +129,9 @@ editarDia(saldo:number) {
     buscarCoincidencia(day:any){
      
     day.setHours(0, 0, 0, 0);
-    
-      
+    console.log("buscarC",this.testObj);
+
+    if(this.testObj){
       let res = this.testObj.find((obj:any) => obj.timeStamp == day )
       if(res){
         console.log("true");
@@ -123,6 +144,13 @@ editarDia(saldo:number) {
         
         return false
       }
+    }
+    else{
+      return false
+    }
+    
+      
+      
       
     }
 

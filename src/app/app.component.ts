@@ -2,6 +2,7 @@ import { Component,ChangeDetectionStrategy } from '@angular/core';
 import { CalendarioDineroComponent } from './calendario-dinero/calendario-dinero.component';
 import { NbDialogService } from '@nebular/theme';
 import { ModalAgregarEditComponent } from './modal-agregar-edit/modal-agregar-edit.component';
+import { NgxSpinnerService } from 'ngx-spinner';
 @Component({
   selector: 'app-root',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -10,7 +11,16 @@ import { ModalAgregarEditComponent } from './modal-agregar-edit/modal-agregar-ed
 })
 export class AppComponent {
   inputModal = 0;
-  constructor(private dialogService: NbDialogService){}
+  showContent:boolean = false;
+  constructor(private dialogService: NbDialogService, private spinner: NgxSpinnerService){
+    this.spinner.show();
+
+      setTimeout(() => {
+        /** spinner ends after 5 seconds */
+        this.showContent = true;
+        this.spinner.hide();
+      }, 1500);
+  }
 
 agregarEditarImporte() {
   this.dialogService.open(ModalAgregarEditComponent).onClose.subscribe(importe => this.inputModal = importe);

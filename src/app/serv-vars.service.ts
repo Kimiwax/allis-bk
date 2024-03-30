@@ -27,6 +27,10 @@ fechaSeleccionada: any;
    return this.firebase.collection('anioID').snapshotChanges();
   }
 
+  actualizarDatos(id: string, data:any): Promise <any>{
+    return this.firebase.collection('anioID').doc(id).update(data)
+  }
+
   agregar(valor:any){
     this.fechasYImportes.push(valor)
   }

@@ -10,6 +10,7 @@
     </nb-layout-column>
 
     <nb-layout-column>
+      
       <nb-card status="info" style="margin-top: 16px; height: 476px;">
         <nb-card-header id="card-2" style="font-size: 30px;">{{ date | date }}</nb-card-header>
         <ng-container *ngIf="buscarCoincidencia(date); else empty">

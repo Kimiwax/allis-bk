@@ -1,10 +1,10 @@
-import { LOCALE_ID, NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NbThemeModule, NbLayoutModule, NbCardModule, NbTabsetModule, NbCalendarModule, NbButtonModule, NbDialogModule, NbInputModule } from '@nebular/theme';
+import { NbThemeModule, NbLayoutModule, NbCardModule, NbTabsetModule, NbCalendarModule, NbButtonModule, NbDialogModule, NbInputModule, NbSpinnerModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { CalendarioDineroComponent } from './calendario-dinero/calendario-dinero.component';
 import es from '@angular/common/locales/es';
@@ -16,6 +16,7 @@ import {AngularFireModule} from '@angular/fire/compat';
 import {environment } from 'src/environments/environment'
 import {AngularFirestoreModule} from '@angular/fire/compat/firestore'
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 registerLocaleData(es);
 @NgModule({
@@ -41,8 +42,13 @@ registerLocaleData(es);
     FormsModule,
     AngularFirestoreModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    NbSpinnerModule,
+    BrowserAnimationsModule,
+    NgxSpinnerModule
   ],
+  exports: [NgxSpinnerModule],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [
     {provide: LOCALE_ID, useValue: 'es-AR'},
   ],

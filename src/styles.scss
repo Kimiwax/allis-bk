@@ -35,8 +35,48 @@ body > app-root > app-home > nb-layout > div > div > div > div > div > nb-layout
   background-color: #393e46
 }
 
+nb-calendar-days-names.size-large .day{
+  color: white !important;
+}
+
+body > app-root > app-home > nb-layout > div > div > div > div > div > nb-layout-column.col > nb-card > nb-card-body > nb-calendar > nb-base-calendar > nb-card > nb-card-header > nb-calendar-view-mode > button {
+  color: white !important;
+}
+
+nb-calendar-picker .year-cell.size-large{
+  color: white !important
+}
+
+nb-calendar-picker .month-cell.size-large{
+  color: white !important;
+}
+
+body > app-root > app-home > nb-layout > div > div > div > div > div > nb-layout-column.col > nb-card > nb-card-body > nb-calendar > nb-base-calendar > nb-card > nb-card-header > nb-calendar-pageable-navigation > button.prev-month.appearance-ghost.size-medium.shape-rectangle.icon-start.icon-end.status-basic.nb-transition{
+  color: white !important;
+}
+
+body > app-root > app-home > nb-layout > div > div > div > div > div > nb-layout-column.col > nb-card > nb-card-body > nb-calendar > nb-base-calendar > nb-card > nb-card-header > nb-calendar-pageable-navigation > button.next-month.appearance-ghost.size-medium.shape-rectangle.icon-start.icon-end.status-basic.nb-transition{
+  color: white !important;
+}
+
 /* Importing Bootstrap SCSS file. */
 @import "./node_modules/bootstrap/scss/bootstrap";
 
 /* Importing Datepicker SCSS file. */
 @import "node_modules/ngx-bootstrap/datepicker/bs-datepicker";
+
+@media only screen and (max-width: 768px) {
+  /* Agrega aquí tus estilos específicos para dispositivos móviles */
+  .columns{
+      display: flex;
+      flex-direction: column !important;
+  }
+
+  nb-base-calendar nb-card {
+    height: 100% !important;
+    width: 100% !important;
+  }
+
+  
+  /* Puedes agregar más estilos según sea necesario */
+}
