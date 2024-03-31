@@ -17,6 +17,7 @@ import {environment } from 'src/environments/environment'
 import {AngularFirestoreModule} from '@angular/fire/compat/firestore'
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 
 registerLocaleData(es);
 @NgModule({
@@ -45,7 +46,8 @@ registerLocaleData(es);
     AngularFireDatabaseModule,
     NbSpinnerModule,
     BrowserAnimationsModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    AngularFireAuthModule
   ],
   exports: [NgxSpinnerModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
