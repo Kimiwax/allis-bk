@@ -53,6 +53,8 @@ registerLocaleData(es);
     NbSpinnerModule,
     BrowserAnimationsModule,
     NgxSpinnerModule,
+    NbEvaIconsModule,
+
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore())
   ],

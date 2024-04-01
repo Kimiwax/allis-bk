@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
  arrayTest:any = []
   constructor(private dialogService: NbDialogService, private myServ: ServVarsService, private cdr: ChangeDetectorRef){
     this.saldoDelDia = '';
+    console.log(navigator.userAgent);
     
   }
 

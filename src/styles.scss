@@ -1,6 +1,8 @@
 @use 'themes' as *;
 
 @use '@nebular/theme/styles/globals' as *;
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
 
 @include nb-install() {
   @include nb-theme-global();
