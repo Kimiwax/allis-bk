@@ -2,7 +2,7 @@
 
 <nb-card accent="info">
     <nb-card-body style="align-items: center; display: flex; flex-direction: column;" class="example-items-col">
-      <input type="number" shape="semi-round" nbInput fullWidth status="primary" [(ngModel)]="inputImporte">
+      <input currencyMask [options]="{thousands: '.', decimal: ',', precision:'0', align:'left' }" type="tel" shape="semi-round" nbInput fullWidth status="primary" [(ngModel)]="inputImporte">
       <button style="margin-top: 10px;" nbButton hero status="success"(click)="close()" >Aceptar</button>
     </nb-card-body>
   </nb-card>

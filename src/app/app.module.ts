@@ -19,6 +19,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import {provideFirestore,getFirestore} from '@angular/fire/firestore'
+import { CurrencyMaskModule } from 'ng2-currency-mask';
 registerLocaleData(es);
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ registerLocaleData(es);
     BrowserAnimationsModule,
     NgxSpinnerModule,
     NbEvaIconsModule,
+    CurrencyMaskModule,
 
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore())

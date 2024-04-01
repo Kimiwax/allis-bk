@@ -40,4 +40,14 @@ let fecha = new Date(timestamp);
 return fecha.getMonth() + 1;
 }
 
+parsearDinero(saldo:any){
+  if (saldo < 10000) {
+    return saldo.toString();
+  } else if (saldo >= 10000 && saldo < 1000000) {
+    return (((saldo / 1000)).toString()).split('.')[0] + 'K';
+  } else {
+    return (saldo / 1000000).toFixed(0) + 'M';
+  }
+}
+
 }
