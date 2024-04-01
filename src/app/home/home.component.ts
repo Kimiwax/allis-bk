@@ -14,48 +14,21 @@ export class HomeComponent implements OnInit {
 //  testObj: any = [{saldo: '88', timeStamp: 'Wed Mar 06 2024 00:00:00 GMT-0300 (hora estándar de Argentina)'}]
  testObj: any;
  arrayTest:any = []
-  constructor(private dialogService: NbDialogService, private myServ: ServVarsService){
+  constructor(private dialogService: NbDialogService, private myServ: ServVarsService, private cdr: ChangeDetectorRef){
     this.saldoDelDia = '';
-    //  let testObjs: any = localStorage.getItem('testObj') || [];
-      myServ.leerDatos().subscribe(res => {
-
-      res.forEach((element:any) => {
-        // console.log(element.payload.doc.id);
-        // console.log(element.payload.doc.data());
-        this.arrayTest.push(element.payload.doc.data())
-        
-      });
-      console.log(this.arrayTest);
-      this.testObj = this.arrayTest
-      let fechaActualP = new Date()
-      console.log("fecha1", this.testObj);
-      
-    console.log("fechaA",fechaActualP);
-    localStorage.setItem('testObj', JSON.stringify(this.testObj));
-    })
-    // let testOBjF = JSON.parse(testObjs);
-    // console.log("home",testOBjF);
-    
-    // let fechaActualP = new Date()
-    // this.buscarCoincidencia(fechaActualP);
-    // console.log(fechaActualP);
-
-  //  myServ.leerDatos().subscribe(res => {
-  //     console.log("res",res);
-
-  //     res.forEach((element:any) => {
-  //       console.log(element.payload.doc.id);
-  //       console.log(element.payload.doc.data());
-        
-        
-  //     });
-      
-  //   })
     
   }
 
   ngOnInit(): void {
+     this.test();
       
+  }
+
+
+  test(){
+    let testObjs: any = localStorage.getItem('testObj') || [];
+    this.testObj = JSON.parse(testObjs);
+    console.log("Hola");
   }
 
 agregarEditarImporte() {
@@ -81,8 +54,9 @@ this.myServ.fechaSeleccionada = fechaSeleccionada;
 this.dialogService.open(ModalAgregarEditComponent).onClose.subscribe(()=> {
   console.log("Se cerro");
    setTimeout(() => {
-    window.location.reload();  
-   }, 3000);
+    window.location.reload();
+    
+   }, 1500);
   
   // let testObj: any = localStorage.getItem('testObj') || [];
   // let testOBjF = JSON.parse(testObj)
