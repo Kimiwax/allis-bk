@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./modal-agregar-edit.component.scss']
 })
 export class ModalAgregarEditComponent implements OnDestroy {
-  inputImporte = 0;
+  inputImporte:any;
   diaSeleccionada:any;
   arrayFechastest:any = [];
   private mySubscription: Subscription;
